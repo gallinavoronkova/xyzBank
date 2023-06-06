@@ -8,7 +8,7 @@ public class BankManagerLoginPage extends PageBase {
 
     public BankManagerLoginPage(WebDriver driver) {
         super(driver);
-    }
+    } //конструктор, чтобы мы могли работать с webdriver
 
     @FindBy(xpath = "//*[@ng-click='addCust()']")
     WebElement addCustomerTab;

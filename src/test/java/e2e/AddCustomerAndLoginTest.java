@@ -1,12 +1,11 @@
 package e2e;
 
 import com.github.javafaker.Faker;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 import org.testng.annotations.Test;
+import pages.AccountPage;
 import pages.AddCustomerPage;
+import pages.CustomerLoginPage;
 import pages.HomePage;
 
 public class AddCustomerAndLoginTest extends TestBase {
@@ -16,6 +15,10 @@ public class AddCustomerAndLoginTest extends TestBase {
     Faker faker = new Faker(); // инициализируем новый экземпляр класса Faker из которого потом будем вытаскивать методы
 
     HomePage homePage;
+    AddCustomerPage addCustomerPage; //типизация класса. Делаем это сверху, чтобы потом в кде не нужно было повторять
+    CustomerLoginPage customerLoginPage;
+
+    AccountPage accountPage;
 
     @Test
     public void addCustomerAndLogin() {
@@ -26,62 +29,58 @@ public class AddCustomerAndLoginTest extends TestBase {
         homePage = new HomePage(app.driver);
 
 
-
         //Click on Bank Manager Login Button
         homePage.clickOnBankManagerLoginButton(); // вызвали переменную и вытащили из нее клик. Эта строчка заменяет три последующих строки
-//        WebElement managerLoginButton = driver.findElement(By.xpath("//*[@ng-click='manager()']")); //по какому типу будем искать локатор. Сделали переменную, чтобы потом вызывать
+//        WebElement managerLoginButton = driver.findElement(By.xpath("//*[@ng-click='manager()']")); //по какому типу будем искать локатор. Сделали переменную, чтобы потом вызывать //эти три последующие три строчки написаны чисто на Селениуме, это для общего развития))
 //        managerLoginButton.isDisplayed();
 //        managerLoginButton.click();
 
-        // Click on Add Customer Button
-      pageBase.click(By.cssSelector("[ng-class='btnClass1']"));
+        // Click on Add Customer Tab
+        addCustomerPage = new AddCustomerPage(app.driver); //новый экземпляр класса и передаем в него app.driver
+        addCustomerPage.openAddCustomerTab();
 //        WebElement addCustomerTab = driver.findElement(By.cssSelector("[ng-class='btnClass1']"));
 //        addCustomerTab.isDisplayed();
 //        addCustomerTab.click();
 
         // Fill Add customer form
-        app.driver.findElement(By.xpath("//input[@placeholder='First Name']")).sendKeys(firstName);//вводит в поле ввода наше значение
-        app.driver.findElement(By.xpath("//input[@placeholder='Last Name']")).sendKeys(lastName);//вводит в поле ввода наше значение
-        app.driver.findElement(By.xpath("//input[@placeholder='Post Code']")).sendKeys(postCode);//вводит в поле ввода наше значение
+//        app.driver.findElement(By.xpath("//input[@placeholder='First Name']")).sendKeys(firstName);//вводит в поле ввода наше значение
+//        app.driver.findElement(By.xpath("//input[@placeholder='Last Name']")).sendKeys(lastName);//вводит в поле ввода наше значение
+//        app.driver.findElement(By.xpath("//input[@placeholder='Post Code']")).sendKeys(postCode);//вводит в поле ввода наше значение
+        addCustomerPage.fillFirstNameField(firstName);
+        addCustomerPage.fillLastNameField(lastName);
+        addCustomerPage.fillPostCodeField(postCode);
 
         // Click on Submit Button
-        pageBase.click(By.xpath("//button[@type='submit']"));
+        addCustomerPage.clickOnAddCustomerButton();
+//        pageBase.click(By.xpath("//button[@type='submit']"));
 //        WebElement submitButton = driver.findElement(By.xpath("//button[@type='submit']"));
 //        submitButton.isDisplayed();
 //        submitButton.click();
 
+
         // Verify Customer is added successfully (take alert text)
-        String actualSuccessfullyAlertText = app.driver.switchTo().alert().getText(); //создали переменную для того, чтоб сверить текст в алерте
         String expectedSuccessfullyAlertText = "Customer added successfully with customer id";
         String err = "Actual alert text does not contain expected alert text";
-        Assert.assertTrue(actualSuccessfullyAlertText.contains(expectedSuccessfullyAlertText), err);
-        app.driver.switchTo().alert().accept(); //подтвердить алерт, на нем нажали ОК
+        Assert.assertTrue(addCustomerPage.getAlertText().contains(expectedSuccessfullyAlertText), err);
+        addCustomerPage.applyAlert();
 
         // Click on Home button
         homePage.clickOnHomeButton();
-//        WebElement homeButton = driver.findElement(By.xpath("//*[@ng-click='home()']"));
-//        homeButton.isDisplayed();
-//        homeButton.click();
 
         // Click on Customer Login button
         homePage.clickOnCustomerLoginButton(); // вызвали метод
-//        WebElement customerLoginButton = driver.findElement(By.xpath("//button[@ng-click='customer()']"));
-//        customerLoginButton.isDisplayed();
-//        customerLoginButton.click();
 
         // Choose customer from the dropdown
-        WebElement customerDropdown = app.driver.findElement(By.xpath("//*[@ng-model='custId']"));
-        Select select = new Select(customerDropdown); // используем только, когда на странице есть тег <select> для выбора из выпадающего списка
-        select.selectByVisibleText(expectedFirstAndLastName);
+        customerLoginPage = new CustomerLoginPage(app.driver);
+        customerLoginPage.selectCustomerName(expectedFirstAndLastName);
+        customerLoginPage.clickOnLoginButton();
 
         // Click on Login Button
-        pageBase.click(By.xpath("//button[@type='submit']"));
-//        WebElement loginButton = driver.findElement(By.xpath("//button[@type='submit']"));
-//        loginButton.isDisplayed();
-//        loginButton.click();
+
 
         // Verify correct customer is logged in (take text from the page)
-        String firstNameAndLastName = app.driver.findElement(By.xpath("//*[@class='fontBig ng-binding']")).getText();
-        Assert.assertEquals(firstNameAndLastName, expectedFirstAndLastName, "Actual first name and last name is not equal expected");
+        accountPage = new AccountPage(app.driver);
+        err = "Actual first name and last name is not equal expected";
+        Assert.assertEquals(accountPage.getCustomerFirstAndLastName(), expectedFirstAndLastName, err);
     }
 }

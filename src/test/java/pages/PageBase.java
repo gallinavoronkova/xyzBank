@@ -4,6 +4,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.Select;
 
 public class PageBase { // это наш основной класс
     public WebDriver driver;
@@ -26,6 +27,11 @@ public class PageBase { // это наш основной класс
 
     public void clickOnHomeButton() {
         click(homeButton);
+    }
+
+    public void selectDropdownText(WebElement element, String text) {
+        Select select = new Select(element);
+        select.selectByVisibleText(text);
     }
 
 

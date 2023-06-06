@@ -36,4 +36,13 @@ public class AddCustomerPage extends BankManagerLoginPage {
     public void clickOnAddCustomerButton() {
         click(addCustomerButton);
     }
+
+    public String getAlertText() { //получаем текст алерта. обращаемся к драйверу, достаем текст
+        return driver.switchTo().alert().getText();
+    }
+
+    public void applyAlert() {
+        driver.switchTo().alert().accept(); //нажали кнопку ОК на алерте
+    }
+
 }

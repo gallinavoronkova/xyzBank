@@ -9,10 +9,10 @@ public class HomePage extends PageBase { // HomePage наследует PageBase
         super(driver);
     }
 
-    @FindBy(xpath = "//*[ng-click='customer()']")
+    @FindBy(xpath = "//*[@ng-click='customer()']")
     WebElement customerLoginButton;
 
-    @FindBy(xpath = "//*[ng-click='manager()']")
+    @FindBy(xpath = "//*[@ng-click='manager()']")
     WebElement bankManagerLoginButton;
 
     public void clickOnCustomerLoginButton() {

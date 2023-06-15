@@ -28,7 +28,6 @@ public class BankManagerLoginPage extends PageBase {
     }
 
     public void openCustomersTab() {
-
         click(customersTab);
     }
 }

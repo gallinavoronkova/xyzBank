@@ -20,7 +20,7 @@ public class AddCustomerAndLoginTest extends TestBase {
 
     AccountPage accountPage;
 
-    @Test
+    @Test //анотация Test
     public void addCustomerAndLogin() {
         String firstName = faker.internet().uuid(); //рандом берем из интернета
         String lastName = faker.internet().uuid(); //рандом берем из интернета
@@ -75,12 +75,31 @@ public class AddCustomerAndLoginTest extends TestBase {
         customerLoginPage.selectCustomerName(expectedFirstAndLastName);
         customerLoginPage.clickOnLoginButton();
 
-        // Click on Login Button
-
-
         // Verify correct customer is logged in (take text from the page)
         accountPage = new AccountPage(app.driver);
         err = "Actual first name and last name is not equal expected";
         Assert.assertEquals(accountPage.getCustomerFirstAndLastName(), expectedFirstAndLastName, err);
+    }
+
+    @Test
+    public void addCustomerWithInvalidData() {
+        String firstName = " ";
+        String lastName = " ";
+        String postCode = " ";
+
+        homePage = new HomePage(app.driver);
+        homePage.clickOnBankManagerLoginButton();
+        addCustomerPage = new AddCustomerPage(app.driver);
+        addCustomerPage.openAddCustomerTab();
+
+        addCustomerPage.fillFirstNameField(firstName);
+        addCustomerPage.fillLastNameField(lastName);
+        addCustomerPage.fillPostCodeField(postCode);
+        addCustomerPage.clickOnAddCustomerButton();
+
+        String expectedUnSuccessfullyAlertText = "Please check the details. Customer may be duplicate.";
+        String err = "Actual alert text does not contain expected alert text";
+        Assert.assertTrue(addCustomerPage.getAlertText().contains(expectedUnSuccessfullyAlertText), err);
+        addCustomerPage.applyAlert();
     }
 }

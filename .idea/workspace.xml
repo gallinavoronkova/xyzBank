@@ -4,16 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="22ffc799-2a36-473a-b23c-ff1f2626a6fa" name="Changes" comment="init commit">
-      <change afterPath="$PROJECT_DIR$/src/test/java/pages/AccountPage.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/pages/CustomerLoginPage.java" afterDir="false" />
+    <list default="true" id="22ffc799-2a36-473a-b23c-ff1f2626a6fa" name="Changes" comment="final test">
+      <change afterPath="$PROJECT_DIR$/src/test/java/e2e/AddCustomerAndDeleteTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/enums/SortDirections.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/enums/SortValues.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/pages/OpenAccountPage.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/pages/TrainingReturnMethod.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/e2e/AddCustomerAndLoginTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/e2e/AddCustomerAndLoginTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/pages/AddCustomerPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/pages/AddCustomerPage.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/pages/BankManagerLoginPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/pages/BankManagerLoginPage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/pages/HomePage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/pages/HomePage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/pages/OpenAccountPage.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/pages/PageBase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/pages/PageBase.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/pages/CustomersPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/pages/CustomersPage.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -28,6 +28,7 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="Enum" />
         <option value="Class" />
       </list>
     </option>
@@ -62,29 +63,41 @@
     &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;
   }
 }</component>
-  <component name="RunManager" selected="TestNG.AddCustomerAndLoginTest">
-    <configuration name="FirstSeleniumTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
-      <ExternalSystemSettings>
-        <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list>
-            <option value=":test" />
-            <option value="--tests" />
-            <option value="&quot;FirstSeleniumTest&quot;" />
-          </list>
-        </option>
-        <option name="vmOptions" />
-      </ExternalSystemSettings>
-      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
-      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
-      <DebugAllEnabled>false</DebugAllEnabled>
-      <method v="2" />
+  <component name="RunManager" selected="TestNG.AddCustomerAndDeleteTest.addCustomerAndDeleteTest">
+    <configuration name="AddCustomerAndDeleteTest" type="TestNG" temporary="true" nameIsGenerated="true">
+      <module name="xyzBank.test" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="e2e.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="e2e" />
+      <option name="MAIN_CLASS_NAME" value="e2e.AddCustomerAndDeleteTest" />
+      <option name="TEST_OBJECT" value="CLASS" />
+      <properties />
+      <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="AddCustomerAndDeleteTest.addCustomerAndDeleteTest" type="TestNG" temporary="true" nameIsGenerated="true">
+      <module name="xyzBank.test" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="e2e.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="e2e" />
+      <option name="MAIN_CLASS_NAME" value="e2e.AddCustomerAndDeleteTest" />
+      <option name="METHOD_NAME" value="addCustomerAndDeleteTest" />
+      <option name="TEST_OBJECT" value="METHOD" />
+      <properties />
+      <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
     </configuration>
     <configuration name="AddCustomerAndLoginTest" type="TestNG" temporary="true" nameIsGenerated="true">
       <module name="xyzBank.test" />
@@ -103,22 +116,17 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="FirstSeleniumTest" type="TestNG" temporary="true" nameIsGenerated="true">
+    <configuration name="AddCustomerAndLoginTest.addCustomerWithInvalidData" type="TestNG" temporary="true" nameIsGenerated="true">
       <module name="xyzBank.test" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="FirstSeleniumTest" />
-      <option name="TEST_OBJECT" value="CLASS" />
-      <properties />
-      <listeners />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="FirstSeleniumTest.firstTest" type="TestNG" temporary="true" nameIsGenerated="true">
-      <module name="xyzBank.test" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="FirstSeleniumTest" />
-      <option name="METHOD_NAME" value="firstTest" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="e2e.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="e2e" />
+      <option name="MAIN_CLASS_NAME" value="e2e.AddCustomerAndLoginTest" />
+      <option name="METHOD_NAME" value="addCustomerWithInvalidData" />
       <option name="TEST_OBJECT" value="METHOD" />
       <properties />
       <listeners />
@@ -139,11 +147,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="TestNG.AddCustomerAndDeleteTest.addCustomerAndDeleteTest" />
+        <item itemvalue="TestNG.AddCustomerAndDeleteTest" />
+        <item itemvalue="TestNG.AddCustomerAndLoginTest.addCustomerWithInvalidData" />
         <item itemvalue="TestNG.AddCustomerAndLoginTest" />
         <item itemvalue="TestNG.SecondSeleniumTest" />
-        <item itemvalue="TestNG.FirstSeleniumTest.firstTest" />
-        <item itemvalue="TestNG.FirstSeleniumTest" />
-        <item itemvalue="Gradle.FirstSeleniumTest" />
       </list>
     </recent_temporary>
   </component>
@@ -163,7 +171,14 @@
       <option name="project" value="LOCAL" />
       <updated>1685906318258</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="final test">
+      <created>1686079680254</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1686079680254</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -179,7 +194,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="init commit" />
-    <option name="LAST_COMMIT_MESSAGE" value="init commit" />
+    <MESSAGE value="final test" />
+    <option name="LAST_COMMIT_MESSAGE" value="final test" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

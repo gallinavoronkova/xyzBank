@@ -16,7 +16,17 @@ dependencies {
     implementation group: 'io.github.bonigarcia', name: 'webdrivermanager', version: '5.3.3'
     implementation group: 'com.github.javafaker', name: 'javafaker', version: '1.0.2'
 }
+//
+//test {
+//    useJUnitPlatform()
+//}
 
 test {
-    useJUnitPlatform()
+    useTestNG()
+}
+
+task testUser(type: Test) {
+    useTestNG() {
+        suites 'src/test/resources'
+    }
 }
